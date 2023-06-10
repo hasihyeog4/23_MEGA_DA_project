@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Project</title>
+</head>
+<body onload="SetFormDefaults();">
+  <iframe name="iframe1" style="display: none"></iframe>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        My Project
+      </a>
+    </div>
+  </nav>
+  <div class="sidebar">
+    <div class="my-3 fs-5 fw-bold">지점명</div>
+    
+    <form id = "temp">
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="seoul" autocomplete="off">
+        <label class="btn btn-outline-primary" for="seoul">서울</label>
+        
+        <input type="checkbox" class="btn-check" id="jeju" autocomplete="off">
+        <label class="btn btn-outline-primary" for="jeju">제주</label>
+        
+        <input type="checkbox" class="btn-check" id="back" autocomplete="off">
+        <label class="btn btn-outline-primary" for="back">백령도</label>
+        
+        <input type="checkbox" class="btn-check" id="os" autocomplete="off">
+        <label class="btn btn-outline-primary" for="os">울산</label>
+        
+        <input type="checkbox" class="btn-check" id="dg" autocomplete="off">
+        <label class="btn btn-outline-primary" for="dg">대전</label>
+        
+        <input type="checkbox" class="btn-check" id="bs" autocomplete="off">
+        <label class="btn btn-outline-primary" for="bs">부산</label>
+      </div>
+      <div class="my-3 fs-5 fw-bold"></div>
+      <div class="ma">
+        <select class="form-select" aria-label="Default select example" id="temp21">
+          <option value="0">평균기온(°C)</option>
+          <option value="1">최고기온(°C)</option>
+          <option value="2">최저기온(°C)</option>
+          <option value="3">평균풍속(m/s)</option>
+          <option value="4">평균운량(1/10)</option>
+          <option value="5">일시</option>
+        </select>
+        
+      </div>
+      <div class="my-3 fs-5 fw-bold">
+        <select class="form-select" aria-label="Default select example" id="temp22">
+          <option value="0">평균기온(°C)</option>
+          <option value="1">최고기온(°C)</option>
+          <option value="2">최저기온(°C)</option>
+          <option value="3">평균풍속(m/s)</option>
+          <option value="4">평균운량(1/10)</option>
+          <option value="5">일시</option>
+        </select>
+      </div>
+      
+      
+      
+      <div class="my-3 fs-6 ma">그래프 종류</div>
+      <select class="form-select" aria-label="Default select example" id="graph1">
+        <option value="0">꺽은선</option>
+        <option value="1">원</option>
+        <option value="2">막대</option>
+        <option value="3">표</option>
+        <option value="4">점</option>
+      </select>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+        <label class="form-check-label" for="flexRadioDefault1">
+          꺽은선
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+        <label class="form-check-label" for="flexRadioDefault2">
+          원
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+        <label class="form-check-label" for="flexRadioDefault3">
+          막대
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+        <label class="form-check-label" for="flexRadioDefault4">
+          표
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+        <label class="form-check-label" for="flexRadioDefault5">
+          점
+        </label>
+      </div>-->
+      <div class="ma">
+        <button type="button" class="btn btn-light" onclick="temptemp()">검색</button>
+      </div>
+      
+      
+      <hr>
+      
+      
+    </form">
+    <form>
+      <div class="my-3 fs-5 fw-bold">온도, 운량, 풍속 상수 입력</div>
+      <div class="my-3 fs-5 fw-bold">
+        <div class="ma">
+          <select class="form-select" aria-label="Default select example" id="temp_1">
+            <option value="0">평균기온(°C)</option>
+            <option value="1">최고기온(°C)</option>
+            <option value="2">최저기온(°C)</option>
+            <option value="3">평균풍속(m/s)</option>
+            <option value="4">평균운량(1/10)</option>
+            <option value="4">일시</option>
+          </select>
+        </div>
+        
+        <!-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button groups_1">
+          <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck11">평균기온</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck22" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck22">최고기온</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck33" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck33">최저기온</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck44" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck44">평균풍속</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck55" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck55">평균운량</label>
+        </div> -->
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="btn_tcw" class="temps" onclick="getTcw()">검색</button>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="btn_tcw" id="tcw">
+      </div>
+      
+      
+      
+      
+    </form>
+    <form>
+      <!-- <select class="form-select" aria-label="Default select example">
+        <option value="0">서울</option>
+        <option value="1">제주</option>
+        <option value="2">부산</option>
+        <option value="2">백령도</option>
+        <option value="2">울산</option>
+        <option value="2">대전</option>
+      </select> -->
+      <div class="my-3 fs-5 fw-bold">특정지역 검색</div>
+      <div class="ma">
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck11">서울</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck21" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck21">제주</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck31" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck31">백령도</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck41" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck41">울산</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck51" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck51">대전</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck61" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btncheck61">부산</label>
+        </div>
+      </div>
+      <div class="ma">
+        <select class="form-select" aria-label="Default select example">
+          <option value="0">평균기온(°C)</option>
+          <option value="1">최고기온(°C)</option>
+          <option value="2">최저기온(°C)</option>
+          <option value="3">평균풍속(m/s)</option>
+          <option value="4">평균운량(1/10)</option>
+          <option value="4">일시</option>
+        </select>
+      </div>
+      
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"id="temp_2">
+      </div>
+      
+      
+    </form>
+    <!-- <button>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+      </svg>
+    </button> -->
+    <div class="submit">
+      <button id="submit" onclick="submit()">
+        <p>submit</p>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div style="background-color: #E2F0D9;">
+      <h2>My Graph</h2>
+      <p>This is the main content of my web page.</p>
+      <div style="width: 50%">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- <button id="submit" onclick="submit()">
+    <p>submit</p>
+  </button>
+  <hr />
+  <p>Slider bar</p>
+  <div>
+    <input type="range" id="slider" min="0" max="255" step="1" value="0" />
+  </div>
+  <p id="slider_label"></p>
+  <hr />
+  <div>Drop Down</div>
+  <div>
+    <select id="dropdown">
+      <option value="0">a</option>
+      <option value="1">b</option>
+      <option value="2">c</option>
+    </select>
+  </div>
+  <hr />
+  <div style="width: 500px; height: 500px">
+    <canvas id="myChart"></canvas>
+  </div> -->
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" type="text/css" href="./bootstrap.min.css">
+<script>
+  function SetFormDefaults() {}
+  
+  function getTcw() {
+    let v = document.getElementById("tcw").value;
+    console.log(v)
+  }
+
+  var labels = ["January", "February", "March", "April", "May", "June"];
+  var data = {
+    labels: labels,
+    datasets: [
+    {
+      label: "My First dataset",
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(255, 99, 132)",
+      data: [0, 10, 5, 2, 20, 30, 45],
+    },
+    ],
+  };
+  
+  const config = {
+    type: "line",
+    data: data,
+    options: {},
+  };
+  
+  var myChart = new Chart(document.getElementById("myChart"), config);
+  
+  function submit() {
+    fetch("http://127.0.0.1:5000/")
+    .then((response) => response.json())
+    .then((data) => {
+      config.data = data;
+      myChart.update();
+    });
+  }
+  
+  // const form = document.getElementById("temp");
+  
+  //   form.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    
+    //     let formData = new FormData();
+    
+    //     let username = document.getElementById("btncheck1").value;
+    
+    //     console.log(username);
+    
+    //   });
+    
+    function temptemp() {
+      let formData = new FormData();
+      
+      let myArr = [false, false, false, false, false, false];
+      myArr[0] = document.getElementById("seoul").checked;
+      myArr[1] = document.getElementById("jeju").checked;
+      myArr[2] = document.getElementById("back").checked;
+      myArr[3] = document.getElementById("os").checked;
+      myArr[4] = document.getElementById("dg").checked;
+      myArr[5] = document.getElementById("bs").checked;
+      
+      let category = document.getElementById("temp21").value;
+      console.log(category);
+      let category2 = document.getElementById("temp22").value;
+      console.log(category2);
+      let graph_category = document.getElementById("graph1").value;
+      console.log(graph_category);
+      console.log(myArr);
+    }
+    function temps() {
+      let formData = new FormData();
+      
+      let myArr = [false, false, false, false, false, false];
+      // myArr[0] = document.getElementById("seoul").checked;
+      // myArr[1] = document.getElementById("jeju").checked;
+      // myArr[2] = document.getElementById("back").checked;
+      // myArr[3] = document.getElementById("os").checked;
+      // myArr[4] = document.getElementById("dg").checked;
+      // myArr[5] = document.getElementById("bs").checked;
+      
+      let category = document.getElementById("temp_1").value;
+      console.log(category);
+      const tcw = document.getElementById('tcw').value;
+      // let category2 = document.getElementById("temp22").value;
+      // console.log(category2);
+      // let graph_category = document.getElementById("graph1").value;
+      // console.log(graph_category);
+      // console.log(myArr);
+    }
+  </script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    nav{
+      background-color: #FBE5D6;
+    }
+    header {
+      background-color: #E2F0D9;
+      color: #fff;
+      padding: 20px;
+    }
+    .sidebar {
+      background-color: #DAE3F3;
+      position: fixed;
+      width: 360px;
+      height: 100%;
+      float: left;
+      padding: 20px;
+    }
+    .content {
+      margin-left: 360px;
+    }
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .temp {
+      background-color: #5c4e4e;
+    }
+    .mar {
+      margin-block-start: 20px;
+      margin-block-end: 20px;
+    }
+    .ma{
+      margin: 20px 0 20px  0 ;
+    }
+    
+    
+  </style>
+  </html>
+  
