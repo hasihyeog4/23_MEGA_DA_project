@@ -113,38 +113,58 @@
       <div class="my-3 fs-5 fw-bold">온도, 운량, 풍속 상수 입력</div>
       <div class="my-3 fs-5 fw-bold">
         <div class="ma">
-          <select class="form-select" aria-label="Default select example" id="temp_1">
-            <option value="0">평균기온(°C)</option>
-            <option value="1">최고기온(°C)</option>
-            <option value="2">최저기온(°C)</option>
-            <option value="3">평균풍속(m/s)</option>
-            <option value="4">평균운량(1/10)</option>
-            <option value="4">일시</option>
-          </select>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="tcw_chk_box_mean_temp">
+            <label class="form-check-label" for="tcw_chk_box_mean_temp">
+              <div class="fs-6 fw-normal">평균기온(°C)</div>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="tcw_chk_box_high_temp" >
+            <label class="form-check-label" for="tcw_chk_box_high_temp">
+              <div class="fs-6 fw-normal">최고기온(°C)</div>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="tcw_chk_box_low_temp" >
+            <label class="form-check-label" for="tcw_chk_box_low_temp">
+              <div class="fs-6 fw-normal">최저기온(°C)</div>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="tcw_chk_box_mean_aws" >
+            <label class="form-check-label" for="tcw_chk_box_mean_aws">
+              <div class="fs-6 fw-normal">평균풍속(m/s)</div>
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="tcw_chk_box_mean_aaoc" >
+            <label class="form-check-label" for="tcw_chk_box_mean_aaoc">
+              <div class="fs-6 fw-normal">평균운량(1/10)</div>
+            </label>
+          </div>
         </div>
-        
-        <!-- <div class="btn-group" role="group" aria-label="Basic checkbox toggle button groups_1">
-          <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck11">평균기온</label>
+        <div class="ma">
+          <div class="d-grid gap-2">
+            <button class="btn btn-light" type="button" onclick="temptemptemp()">🔎 카테고리별 검색</button>
+          </div>
           
-          <input type="checkbox" class="btn-check" id="btncheck22" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck22">최고기온</label>
-          
-          <input type="checkbox" class="btn-check" id="btncheck33" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck33">최저기온</label>
-          
-          <input type="checkbox" class="btn-check" id="btncheck44" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck44">평균풍속</label>
-          
-          <input type="checkbox" class="btn-check" id="btncheck55" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck55">평균운량</label>
-        </div> -->
-      </div>
-      <div class="input-group mb-3">
-        <button class="btn btn-outline-secondary" type="button" id="btn_tcw" class="temps" onclick="getTcw()">검색</button>
-        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="btn_tcw" id="tcw">
+        </div>
       </div>
       
+      <div class="container-fluid m-0 p-0">
+        <div class = "row">
+          <div class="col-9">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="tcws" placeholder="name@example.com" style="height: 60px !important;">
+              <label for="tcws">검색 값 입력창</label>
+            </div>
+          </div>
+          <div class="col-3" >
+            <button class="btn btn-light" type="button" onclick="getTwc_3" style="height: 60px !important;">검색</button>
+          </div>
+        </div>
+      </div>
       
       
       
@@ -249,12 +269,33 @@
 <script>
   function SetFormDefaults() {}
   
-  function getTcw() {
+  function getTcw(event) {
     let v = document.getElementById("tcw").value;
     console.log(v)
     let category = document.getElementById("temp_1").value;
     console.log(category);
+    let result = '';
+    if(event.target.checked)  {
+      result = event.target.value;
+    }else {
+      result = '';
+    }
+    
+    document.getElementById('temps_2').innerText
+    = result;
   }
+  
+  
+  function temptemptemp() {
+    let myArr = [false, false, false, false, false];
+    myArr[0] = document.getElementById("tcw_chk_box_mean_temp").checked;
+    myArr[1] = document.getElementById("tcw_chk_box_high_temp").checked;
+    myArr[2] = document.getElementById("tcw_chk_box_low_temp").checked;
+    myArr[3] = document.getElementById("tcw_chk_box_mean_aws").checked;
+    myArr[4] = document.getElementById("tcw_chk_box_mean_aaoc").checked;
+    console.log(myArr);
+  }
+  
   function getTwc_2() {
     let myArr = [false, false, false, false, false, false];
     myArr[0] = document.getElementById("seoul_0").checked;
@@ -268,6 +309,11 @@
     let category = document.getElementById("drtxt").value;
     console.log(category);
     console.log(myArr);
+  }
+  function getTwc_3()  {
+    const tcw_2 = document.getElementById('tcws').value;
+    let v = document.getElementById("tcw_2").value;
+    console.log(v)
   }
   
   var labels = ["January", "February", "March", "April", "May", "June"];
@@ -389,13 +435,14 @@
     .sidebar {
       background-color: #DAE3F3;
       position: fixed;
-      width: 360px;
+      width: 430px;
       height: 100%;
       float: left;
       padding: 20px;
+      overflow: scroll;
     }
     .content {
-      margin-left: 360px;
+      margin-left: 430px;
     }
     .clearfix::after {
       content: "";
