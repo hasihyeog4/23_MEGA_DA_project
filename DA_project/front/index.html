@@ -160,28 +160,28 @@
       </select> -->
       <div class="my-3 fs-5 fw-bold">특정지역 검색</div>
       <div class="ma">
-        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-          <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck11">서울</label>
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group" >
+          <input type="checkbox" class="btn-check" id="seoul_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="seoul_0">서울</label>
           
-          <input type="checkbox" class="btn-check" id="btncheck21" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck21">제주</label>
+          <input type="checkbox" class="btn-check" id="jeju_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="jeju_0">제주</label>
           
-          <input type="checkbox" class="btn-check" id="btncheck31" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck31">백령도</label>
+          <input type="checkbox" class="btn-check" id="back_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="back_0">백령도</label>
           
-          <input type="checkbox" class="btn-check" id="btncheck41" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck41">울산</label>
+          <input type="checkbox" class="btn-check" id="os_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="os_0">울산</label>
           
-          <input type="checkbox" class="btn-check" id="btncheck51" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck51">대전</label>
+          <input type="checkbox" class="btn-check" id="dg_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="dg_0">대전</label>
           
-          <input type="checkbox" class="btn-check" id="btncheck61" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck61">부산</label>
+          <input type="checkbox" class="btn-check" id="bs_0" autocomplete="off">
+          <label class="btn btn-outline-primary" for="bs_0">부산</label>
         </div>
       </div>
       <div class="ma">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" id="drtxt">
           <option value="0">평균기온(°C)</option>
           <option value="1">최고기온(°C)</option>
           <option value="2">최저기온(°C)</option>
@@ -192,8 +192,8 @@
       </div>
       
       <div class="input-group mb-3">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">검색</button>
-        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"id="temp_2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1" class="temps_1" onclick="getTwc_2()">검색</button>
+        <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"id="tcw_1">
       </div>
       
       
@@ -252,8 +252,24 @@
   function getTcw() {
     let v = document.getElementById("tcw").value;
     console.log(v)
+    let category = document.getElementById("temp_1").value;
+    console.log(category);
   }
-
+  function getTwc_2() {
+    let myArr = [false, false, false, false, false, false];
+    myArr[0] = document.getElementById("seoul_0").checked;
+    myArr[1] = document.getElementById("jeju_0").checked;
+    myArr[2] = document.getElementById("back_0").checked;
+    myArr[3] = document.getElementById("os_0").checked;
+    myArr[4] = document.getElementById("dg_0").checked;
+    myArr[5] = document.getElementById("bs_0").checked;
+    let v = document.getElementById("tcw_1").value;
+    console.log(v)
+    let category = document.getElementById("drtxt").value;
+    console.log(category);
+    console.log(myArr);
+  }
+  
   var labels = ["January", "February", "March", "April", "May", "June"];
   var data = {
     labels: labels,
@@ -330,6 +346,26 @@
       let category = document.getElementById("temp_1").value;
       console.log(category);
       const tcw = document.getElementById('tcw').value;
+      // let category2 = document.getElementById("temp22").value;
+      // console.log(category2);
+      // let graph_category = document.getElementById("graph1").value;
+      // console.log(graph_category);
+      // console.log(myArr);
+    }
+    function temps_1() {
+      let formData = new FormData();
+      
+      let myArr = [false, false, false, false, false, false];
+      // myArr[0] = document.getElementById("seoul").checked;
+      // myArr[1] = document.getElementById("jeju").checked;
+      // myArr[2] = document.getElementById("back").checked;
+      // myArr[3] = document.getElementById("os").checked;
+      // myArr[4] = document.getElementById("dg").checked;
+      // myArr[5] = document.getElementById("bs").checked;
+      
+      let category = document.getElementById("temp_1").value;
+      console.log(category);
+      const tcw_1 = document.getElementById('tcw_1').value;
       // let category2 = document.getElementById("temp22").value;
       // console.log(category2);
       // let graph_category = document.getElementById("graph1").value;
